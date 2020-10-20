@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "hbs": "^4.1.1",
-    "postman-request": "^2.88.1-postman.26"
+    "postman-request": "^2.88.1-postman.26",
+    "express": "^4.17.1",
   }
 }
