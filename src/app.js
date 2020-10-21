@@ -62,10 +62,14 @@ app.get('/weather', (req, res) => {
           error
         })
       }
+      const { forecast, wind_speed, wind_degree, humidity } = response;
       res.send({
         address: req.query.address,
         location,
-        forecast: response
+        forecast,
+        wind_speed,
+        wind_degree,
+        humidity,
       })
     })
   })

@@ -1,6 +1,9 @@
 console.log('CLient side javascript is loaded');
 let messageOne = document.querySelector("#message-1")
 let messageTwo = document.querySelector("#message-2")
+let messageThree = document.querySelector("#message-3");
+let messageFour = document.querySelector("#message-4");
+let messageFive = document.querySelector("#message-5");
 
 const showWeather = (address) => { 
   fetch(`/weather?address=${address}`)
@@ -12,9 +15,12 @@ const showWeather = (address) => {
         messageOne.textContent = response.error;
         return console.error(response.error)
       }
-      console.log(response);
-      messageOne.textContent = response.location;
-      messageTwo.textContent = response.forecast;
+      const { location, forecast, wind_speed, wind_degree, humidity } = response;
+      messageOne.textContent = location;
+      messageTwo.textContent = forecast;
+      messageThree.textContent = wind_speed;
+      messageFour.textContent = wind_degree;
+      messageFive.textContent = humidity;
     })
     .catch((error) => {
       console.error(error);
@@ -30,5 +36,8 @@ weatherForm.addEventListener('submit', (e) => {
   const location = search.value;
   messageOne.textContent = 'Loading ...';
   messageTwo.textContent = '';
+  messageThree.textContent= "";
+  messageFour.textContent = "";
+  messageFive.textContent= "";
   showWeather(location);
 })
